@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 
-END_DATETIME = datetime.datetime(2023, 4, 6, 23, 26, 0)
+END_DATETIME = datetime.datetime(2023, 4, 7, 0, 12, 0)
 
 names = [
     "Kai Sean",
@@ -45,7 +45,7 @@ def most_frequent_names():
 def send_request_to_update_leaderboard():
     global name_to_count_mapping
     requests.post(
-        "http://127.0.0.1:5000/update_leaderboard",
+        "https://abcdebrian.pythonanywhere.com/update_leaderboard",
         json={
             "name_to_count_mapping": {
                 name: count
@@ -56,15 +56,15 @@ def send_request_to_update_leaderboard():
                 )
             },
         },
-        headers={"API_KEY": os.getenv("API_KEY")},
+        headers={"x-api-key": os.getenv("API_KEY")},
     )
 
 
 def send_request_to_end_lottery(winner):
     requests.post(
-        "http://127.0.0.1:5000/end_lottery",
+        "https://abcdebrian.pythonanywhere.com/end_lottery",
         json={"winner": winner},
-        headers={"API_KEY": os.getenv("API_KEY")},
+        headers={"x-api-key": os.getenv("API_KEY")},
     )
 
 

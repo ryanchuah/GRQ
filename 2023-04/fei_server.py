@@ -1,8 +1,10 @@
-import datetime
 from flask import Flask, request
+from dotenv import load_dotenv
+import os
 
 
-name_to_count_mapping = None
+load_dotenv()
+name_to_count_mapping = []
 
 
 winner = None
@@ -73,7 +75,7 @@ def index():
 @app.route("/update_leaderboard", methods=["POST"])
 def update_leaderboard():
     global name_to_count_mapping
-    if request.headers["API_KEY"] == "herfwiughreouighrewogiuwerhgoergrewoh":
+    if request.headers["x-api-key"] == os.getenv("API_KEY"):
         name_to_count_mapping = request.json["name_to_count_mapping"]
         return ""
     else:
@@ -83,7 +85,7 @@ def update_leaderboard():
 @app.route("/end_lottery", methods=["POST"])
 def end_lottery():
     global winner
-    if request.headers["API_KEY"] == "herfwiughreouighrewogiuwerhgoergrewoh":
+    if request.headers["x-api-key"] == os.getenv("API_KEY"):
         winner = request.json["winner"]
         return ""
     else:
