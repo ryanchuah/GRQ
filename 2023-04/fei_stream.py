@@ -7,18 +7,18 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 
-END_DATETIME = datetime.datetime(2023, 4, 7, 0, 12, 0)
+END_DATETIME = datetime.datetime(2023, 4, 24, 21, 30, 0)
 
 names = [
     "Kai Sean",
     "Lib Kai",
     "Kar Lid",
-    "Michael",
-    "Alvin",
     "Yi Luk",
     "Steve",
     "Ryan",
     "Brandon",
+    "Hajni",
+    "James",
 ]
 
 name_to_count_mapping = {name: 0 for name in names}
